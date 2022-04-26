@@ -6,6 +6,7 @@
       <div :class="{'fixed-header':fixedHeader}">
         <navbar />
       </div>
+      <!-- 这里插入TabBar标签业 -->
       <app-main />
     </div>
   </div>
