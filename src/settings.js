@@ -1,4 +1,6 @@
 module.exports = {
+  tagsView: true,
+  showSettings: true,
 
   title: 'Vue Admin Template',
 
