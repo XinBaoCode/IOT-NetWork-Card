@@ -50,9 +50,9 @@ export const constantRoutes = [
     children: [
       {
         path: 'dashboard',
-        name: 'Dashboard',
         component: () => import('@/views/dashboard/index'),
-        meta: { title: '首页', icon: 'dashboard' }
+        name: 'Dashboard',
+        meta: { title: '首页', icon: 'dashboard', noCache: true, affix: true }
       }
     ]
   },
@@ -150,6 +150,8 @@ export const constantRoutes = [
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
 ]
+
+export const asyncRoutes = []
 
 const createRouter = () =>
   new Router({
