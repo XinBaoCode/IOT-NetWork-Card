@@ -9,12 +9,19 @@
            :key="idx">
         <div class="dialog-input">
           <label>{{item.label}}</label>
-          <el-input v-if="!item.select"
-                    v-model="item.value"
-                    :placeholder="item.placeholder"
-                    size="small"
-                    :style="{'width':item.labelWidth ? item.labelWidth+'px': '90px'}" />
-          <el-select v-else
+          <!--ICCID有两个输入框 -->
+          <div v-if="item.range"
+               style="display:flex">
+            <el-input v-model="item.rangeValue.from"
+                      size="small"
+                      :style="{'width':item.labelWidth ? item.labelWidth+'px': '90px'}" />
+            <div class="border-line"></div>
+            <el-input v-model="item.rangeValue.to"
+                      size="small"
+                      :style="{'width':item.labelWidth ? item.labelWidth+'px': '90px'}" />
+          </div>
+          <!-- 选择框 -->
+          <el-select v-else-if="item.select"
                      v-model="listQuery[item.key]"
                      :size="item.size ? item.size : 'small'"
                      :style="{'width':item.width?item.width+'px':'90px'}">
@@ -23,6 +30,12 @@
                        :label="i.value"
                        :value="i.key" />
           </el-select>
+          <!-- 输入框 -->
+          <el-input v-else
+                    v-model="item.value"
+                    :placeholder="item.placeholder"
+                    size="small"
+                    :style="{'width':item.labelWidth ? item.labelWidth+'px': '90px'}" />
         </div>
       </div>
     </div>
@@ -50,12 +63,11 @@ export default {
         {
           label: 'MSISDN',
           value: '',
-          labelWidth: 200
+          labelWidth: 160
         },
         {
           label: 'ICCID号段',
-          value: '',
-          labelWidth: 200,
+          labelWidth: 160,
           range: true,
           rangeValue: {
             from: '',
@@ -64,7 +76,7 @@ export default {
         },
         {
           label: 'SIM卡状态',
-          value: '',
+          key: 'SIMStatus',
           labelWidth: 100,
           select: true,
           option: [
@@ -92,24 +104,24 @@ export default {
         },
         {
           label: '运营商',
-          value: '',
+          key: 'Operator',
           labelWidth: 100,
           select: true,
           option: [
             {
-              key: '1',
+              key: '6',
               value: '全部'
             },
             {
-              key: '2',
+              key: '7',
               value: '移动'
             },
             {
-              key: '3',
+              key: '8',
               value: '联通'
             },
             {
-              key: '4',
+              key: '9',
               value: '电信'
             }
           ]
@@ -122,13 +134,13 @@ export default {
         {
           label: '流量套餐',
           value: '',
-          labelWidth: 200,
+          labelWidth: 160,
           placeholder: '输入关键字后自动搜索'
         },
         {
           label: '备注：',
           value: '',
-          labelWidth: 200
+          labelWidth: 160
         },
         {
           label: '到期时间',
@@ -139,9 +151,23 @@ export default {
       listQuery: {}
     }
   },
+  created() {
+    this.getDefaultSelect()
+  },
   methods: {
     closeDialog() {
       this.$emit('changeDialog', false)
+    },
+    // 是否采用第一个作为默认选择s
+    getDefaultSelect() {
+      const data = {}
+      const elselect = this.selectList
+      for (let item of elselect) {
+        if (item.select) {
+          data[item.key] = item.option[0].key
+        }
+      }
+      this.listQuery = _.cloneDeep(data) // 利用深克隆保留getter和setter属性
     }
   }
 }
@@ -150,10 +176,9 @@ export default {
 <style lang="scss" scoped>
 .dialog-content {
   display: grid;
-  grid-template-columns: 300px 300px 300px;
-  grid-auto-flow: row;
+  grid-template-columns: 260px 420px auto;
   grid-gap: 5px;
-  grid-auto-rows: 100px;
+  grid-auto-rows: 50px;
 }
 
 .dialog-input {
@@ -167,5 +192,18 @@ export default {
   width: 80px;
   text-align: right;
   font-weight: 400;
+}
+
+.hengan {
+  text-align: center;
+}
+
+.border-line {
+  height: 1px;
+  width: 5px;
+  border-top: solid #acc0d8 1px;
+  margin-top: 15px;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 </style>
