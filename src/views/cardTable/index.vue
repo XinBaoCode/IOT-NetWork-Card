@@ -1,38 +1,29 @@
 <template>
-  <div class="dashboard-container">
-      <CardList />
+  <div>
+    <CardFilterPane />
+    <CardList />
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import CardList from './components/CardList.vue'
+import CardFilterPane from './components/CardFilterPane.vue'
 
 export default {
   name: 'CardTable',
   components: {
-    CardList
+    CardList,
+    CardFilterPane
   },
   computed: {
-    ...mapGetters([
-      'name'
-    ])
+    ...mapGetters(['name'])
   },
-  data(){
-    return{
-    }
+  data() {
+    return {}
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.dashboard {
-  &-container {
-    margin: 30px;
-  }
-  &-text {
-    font-size: 30px;
-    line-height: 46px;
-  }
-}
 </style>
