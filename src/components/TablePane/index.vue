@@ -17,6 +17,8 @@
     <el-table ref="table"
               v-loading="dataSource.loading"
               class="table"
+              border="true"
+              show-summary="true"
               :class="{ 'no-data': !dataSource.data || !dataSource.data.length }"
               :data="dataSource.data"
               @row-click="getRowData"
@@ -221,6 +223,7 @@ export default {
   font-weight: bold;
 }
 .table {
+  margin-top: 4px;
   width: 100%;
   font-size: 12px;
 }

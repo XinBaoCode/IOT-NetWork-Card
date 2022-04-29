@@ -30,47 +30,47 @@ export default {
           {
             label: '操作',
             prop: 'action',
-            width: 100
+            width: 85
           },
           {
             label: 'MISIDN',
             prop: '',
-            width: 100
+            width: 85
           },
           {
             label: 'ICCID',
             prop: '',
-            width: 300
+            width: 120
           },
           {
             label: 'IMSI',
             prop: '',
-            width: 100
+            width: 85
           },
           {
             label: 'SIM卡状态',
             prop: '',
-            width: 100
+            width: 85
           },
           {
             label: '流量套餐',
             prop: '',
-            width: 200
+            width: 90
           },
           {
             label: '总流量',
             prop: '',
-            width: 100
+            width: 85
           },
           {
             label: '已用流量',
             prop: '',
-            width: 100
+            width: 85
           },
           {
             label: '剩余流量',
             prop: '',
-            width: 100
+            width: 85
           },
           {
             label: '沉默到期时间',
@@ -85,7 +85,7 @@ export default {
           {
             label: '运营商',
             prop: '',
-            width: 100
+            width: 85
           },
           {
             label: '出库时间',
@@ -100,22 +100,22 @@ export default {
           {
             label: '备注',
             prop: '',
-            width: 200
+            width: 90
           },
           {
             label: '短信操作',
             prop: '',
-            width: 100
+            width: 85
           },
           {
             label: '停机复机',
             prop: '',
-            width: 100
+            width: 85
           },
           {
             label: '二维码',
             prop: '',
-            width: 100
+            width: 85
           }
         ], // 表格的列数据
         handleSelectionChange: (val) => {}, //点击行选中多选返回选中数组

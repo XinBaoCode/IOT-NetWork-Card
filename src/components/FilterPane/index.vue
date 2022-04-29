@@ -15,8 +15,6 @@
         <el-select v-for="(item,index) in filterData.elselect"
                    :key="index"
                    v-model="listQuery[item.key]"
-                   :placeholder="item.name"
-                   clearable
                    :size="item.size ? item.size : 'small'"
                    :style="{'width':item.width?item.width+'px':'90px'}"
                    class="filter-item">
@@ -97,12 +95,14 @@ export default {
   methods: {
     // 是否采用第一个作为默认选择s
     getDefaultSelect() {
+      const data = {}
       const elselect = this.filterData.elselect
       for (let item of elselect) {
         if (item.default) {
-          this.listQuery[item.key] = item.option[0].key
+          data[item.key] = item.option[0].key
         }
       }
+      this.listQuery = _.cloneDeep(data) // 利用深克隆保留getter和setter属性
     },
     handleSearch() {
       console.log('搜索成功', this.listQuery)

@@ -31,15 +31,15 @@ export default {
             default: true, // 默认选中第一个
             option: [
               {
-                key: 1,
+                key: 'cardNum',
                 value: '卡号'
               },
               {
-                key: 2,
+                key: 'ICCID',
                 value: 'ICCID'
               },
               {
-                key: 3,
+                key: 'IMSI',
                 value: 'IMSI'
               }
             ]
@@ -69,7 +69,6 @@ export default {
               this.$refs.child.listQuery = data
               this.$refs.child.getDefaultSelect()
               this.$refs.child.dateRange = ['', '']
-              console.log('重置成功')
             }
           }
         ]
