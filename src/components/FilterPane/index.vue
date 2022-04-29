@@ -32,25 +32,23 @@
                   v-model="listQuery[item.key]"
                   :placeholder="item.name"
                   :size="item.size ? item.size : 'small'"
-                  :style="{'width':item.width?item.width+'px':'200px'}"
-                  class="filter-item" />
+                  :style="{'width':item.width?item.width+'px':'200px'}" />
       </template>
       <div class="btn">
-        <el-button class="filter-item"
-                   type="primary"
-                   @click="handleSearch">
-          搜索
-        </el-button>
-        <el-button class="filter-item"
-                   type="warning"
-                   @click="handleRest">
-          重置
+        <el-button v-for="(item,index) in filterData.elbutton"
+                   class="filter-item"
+                   :key="index"
+                   :type="item.type"
+                   :size="item.size ? item.size : 'small'"
+                   @click="item.handleClick">
+          {{item.name}}
         </el-button>
       </div>
     </div>
   </div>
 </template>
 <script>
+let _ = require('lodash')
 export default {
   props: {
     // eslint-disable-next-line vue/require-default-prop
@@ -70,13 +68,7 @@ export default {
     }
   },
   created() {
-    // 是否采用第一个作为默认选择
-    const elselect = this.filterData.elselect
-    for (let item of elselect) {
-      if (item.default) {
-        this.listQuery[item.key] = item.option[0].key
-      }
-    }
+    this.getDefaultSelect()
   },
   watch: {
     filterData(val) {
@@ -103,9 +95,18 @@ export default {
     }
   },
   methods: {
+    // 是否采用第一个作为默认选择s
+    getDefaultSelect() {
+      const elselect = this.filterData.elselect
+      for (let item of elselect) {
+        if (item.default) {
+          this.listQuery[item.key] = item.option[0].key
+        }
+      }
+    },
     handleSearch() {
       console.log('搜索成功', this.listQuery)
-      const data = this.$global.deepClone(this.listQuery)
+      const data = _.cloneDeep(this.listQuery)
       if (this.dateRange && this.dateRange[0] !== '') {
         const startTime =
           this.$moment(this.dateRange[0]).format('YYYY-MM-DD') + ' 00:00:00'
@@ -120,15 +121,6 @@ export default {
         }
       })
       this.$emit('filterMsg', data)
-    },
-    handleRest() {
-      const data = this.$global.deepClone(this.listQuery)
-      Object.keys(data).forEach(function (key) {
-        data[key] = ''
-      })
-      this.listQuery = data
-      this.dateRange = ['', '']
-      console.log('重置成功', this.listQuery)
     }
   }
 }
@@ -136,7 +128,8 @@ export default {
 
 <style  scoped lang='scss'>
 .filter-item {
-  margin-left: 0px;
+  margin-left: 5px;
+  margin-top: 3px;
   display: inline-block;
 }
 
