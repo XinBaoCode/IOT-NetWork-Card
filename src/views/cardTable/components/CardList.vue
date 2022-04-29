@@ -17,11 +17,17 @@ export default {
       dataSource: {
         tool: [
           {
-            name: '新增用户', //按钮名称
+            name: '导出Excel文件', //按钮名称
             key: 1, // 唯一标识符
             permission: 2010106, // 权限点
-            type: '', // 使用element自带按钮类型
-            bgColor: '#67c23a', // 自定义背景色
+            type: 'primary', // 使用element自带按钮类型
+            handleClick: this.handleAdd //自定义事件
+          },
+          {
+            name: '批量导入', //按钮名称
+            key: 2, // 唯一标识符
+            permission: 2010106, // 权限点
+            bgColor: '#36a832',
             handleClick: this.handleAdd //自定义事件
           }
         ],

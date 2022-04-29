@@ -120,7 +120,7 @@ export default {
           delete data[key]
         }
       })
-      this.$emit('filterMsg', data)
+      // this.$emit('filterMsg', data)
     }
   }
 }

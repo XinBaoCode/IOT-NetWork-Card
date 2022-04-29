@@ -54,9 +54,7 @@ export default {
           {
             name: '搜索',
             type: 'primary',
-            handleClick: () => {
-              this.filterData = []
-            }
+            handleClick: () => {}
           },
           {
             name: '重置',
