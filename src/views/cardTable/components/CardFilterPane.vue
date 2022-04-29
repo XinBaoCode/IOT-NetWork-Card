@@ -11,6 +11,12 @@ let _ = require('lodash')
 
 export default {
   name: 'CardFilterPane',
+  props: {
+    dialogVisible: {
+      type: Boolean,
+      default: false
+    }
+  },
   components: {
     FilterPane
   },
@@ -49,7 +55,9 @@ export default {
           {
             name: '筛选器',
             type: 'warning',
-            handleClick: () => {}
+            handleClick: () => {
+              this.$emit('changeDialog', true)
+            }
           },
           {
             name: '搜索',
