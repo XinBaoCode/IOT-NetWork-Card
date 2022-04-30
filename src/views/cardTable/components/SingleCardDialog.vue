@@ -32,25 +32,21 @@ export default {
           {
             label: 'ICCID',
             value: '',
-            labelWidth: 150,
             readonly: true
           },
           {
             label: 'MSISDN',
             value: '',
-            labelWidth: 150,
             readonly: true
           },
           {
             label: 'ICCID号段',
-            labelWidth: 150,
             readonly: true
           },
           {
             label: 'SIM卡状态',
             key: 'SIMStatus',
             value: '激活中',
-            labelWidth: 150,
             readonly: true,
             tag: true,
             tagType: 'warning'
@@ -59,7 +55,6 @@ export default {
             label: '运营商',
             key: 'Operator',
             value: '中国移动',
-            labelWidth: 150,
             readonly: true,
             tag: true,
             tagType: 'success'
@@ -67,28 +62,25 @@ export default {
           {
             label: '剩余流量<=',
             key: 'leaveM',
-            labelWidth: 150,
             readonly: true
           },
           {
             label: '流量套餐',
             value: '',
             value: '30M新客专享',
-            labelWidth: 150,
             readonly: true,
             tag: true
           },
           {
             label: '备注：',
             value: '',
-            labelWidth: 150,
+            inputWidt: 250,
             readonly: true
           },
           {
             label: '到期时间',
             key: 'endTime',
-            width: 150,
-            labelWidth: 150,
+            width: 250,
             readonly: true
           }
         ]

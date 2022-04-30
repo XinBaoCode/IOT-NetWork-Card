@@ -11,17 +11,17 @@
              style="display:flex">
           <el-input v-model="item.rangeValue.from"
                     :size="item.size? item.size: 'small'"
-                    :style="{'width':item.labelWidth ? item.labelWidth+'px': '90px'}" />
+                    :style="{'width':item.inputWidth ? item.inputWidth+'px':'100%'}" />
           <div class="border-line"></div>
           <el-input v-model="item.rangeValue.to"
                     :size="item.size? item.size: 'small'"
-                    :style="{'width':item.labelWidth ? item.labelWidth+'px': '90px'}" />
+                    :style="{'width':item.inputWidth ? item.inputWidth+'px': '100%'}" />
         </div>
         <!-- 选择框 -->
         <el-select v-else-if="item.select"
                    v-model="listQuery[item.key]"
                    :size="item.size ? item.size : 'small'"
-                   :style="{'width':item.width?item.width+'px':'90px'}">
+                   :style="{'width':item.selectWidth?item.selectWidth+'px':'120px'}">
           <el-option v-for="i in item.option"
                      :key="i.key"
                      :label="i.value"
@@ -40,7 +40,7 @@
                   :size="item.size? item.size: 'small'"
                   :disabled="item.inputDisable ? true:false"
                   :readonly="item.readonly ? true:false"
-                  :style="{'width':item.labelWidth ? item.labelWidth+'px': '90px'}" />
+                  :style="{'width':item.inputWidth ? item.inputWidth+'px':'60%'}" />
       </div>
     </div>
   </div>
@@ -90,9 +90,6 @@ export default {
 </script>
 
 <style  scoped lang='scss'>
-.root {
-  --text: 45%;
-}
 .dialog-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, var(--width-percen));

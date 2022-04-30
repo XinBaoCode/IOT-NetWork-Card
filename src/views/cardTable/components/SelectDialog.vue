@@ -36,12 +36,10 @@ export default {
         selectList: [
           {
             label: 'MSISDN',
-            value: '',
-            labelWidth: 160
+            value: ''
           },
           {
             label: 'ICCID号段',
-            labelWidth: 160,
             range: true,
             rangeValue: {
               from: '',
@@ -51,7 +49,6 @@ export default {
           {
             label: 'SIM卡状态',
             key: 'SIMStatus',
-            labelWidth: 100,
             select: true,
             option: [
               {
@@ -79,7 +76,6 @@ export default {
           {
             label: '运营商',
             key: 'Operator',
-            labelWidth: 100,
             select: true,
             option: [
               {
@@ -103,7 +99,6 @@ export default {
           {
             label: '剩余流量<=',
             key: 'leaveM',
-            labelWidth: 100,
             select: true,
             option: [
               {
@@ -127,19 +122,15 @@ export default {
           {
             label: '流量套餐',
             value: '',
-            labelWidth: 160,
             placeholder: '请输入关键字'
           },
           {
             label: '备注：',
-            value: '',
-            labelWidth: 160
+            value: ''
           },
           {
             label: '到期时间',
             key: 'endTime',
-            width: 150,
-            labelWidth: 100,
             select: true,
             option: [
               {
