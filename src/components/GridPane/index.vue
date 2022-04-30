@@ -1,6 +1,7 @@
 <template>
-  <div class="dialog-content">
-    <div v-for="(item,idx) in selectList"
+  <div class="dialog-content"
+       :style="cssProps">
+    <div v-for="(item,idx) in gridValue.selectList"
          :key="idx">
       <div class="dialog-input">
         <!-- Label -->
@@ -49,8 +50,8 @@
 export default {
   name: 'GridPane',
   props: {
-    selectList: {
-      type: Array,
+    gridValue: {
+      type: Object,
       default: []
     }
   },
@@ -63,11 +64,20 @@ export default {
   created() {
     this.getDefaultSelect()
   },
+  computed: {
+    // 得到UI属性,从而对grid布局
+    cssProps() {
+      return {
+        '--width-percen':
+          Math.floor(100 / this.gridValue.gridSplitVal - 1) + '%'
+      }
+    }
+  },
   methods: {
     // 是否采用第一个作为默认选择s
     getDefaultSelect() {
       const data = {}
-      const elselect = this.selectList
+      const elselect = this.gridValue.selectList
       for (let item of elselect) {
         if (item.select) {
           data[item.key] = item.option[0].key
@@ -80,9 +90,12 @@ export default {
 </script>
 
 <style  scoped lang='scss'>
+.root {
+  --text: 45%;
+}
 .dialog-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 430px));
+  grid-template-columns: repeat(auto-fit, var(--width-percen));
   grid-gap: 5px;
   grid-auto-rows: 40px;
 }

@@ -4,7 +4,7 @@
   <el-dialog title="筛选器"
              :visible.sync="dialogVisible"
              @close="closeDialog">
-    <GridPane :selectList="selectList" />
+    <GridPane :gridValue="gridValue" />
     <span slot="footer"
           class="dialog-footer">
       <el-button @click="closeDialog"
@@ -31,134 +31,137 @@ export default {
   },
   data() {
     return {
-      selectList: [
-        {
-          label: 'MSISDN',
-          value: '',
-          labelWidth: 160
-        },
-        {
-          label: 'ICCID号段',
-          labelWidth: 160,
-          range: true,
-          rangeValue: {
-            from: '',
-            to: ''
+      gridValue: {
+        gridSplitVal: 2,
+        selectList: [
+          {
+            label: 'MSISDN',
+            value: '',
+            labelWidth: 160
+          },
+          {
+            label: 'ICCID号段',
+            labelWidth: 160,
+            range: true,
+            rangeValue: {
+              from: '',
+              to: ''
+            }
+          },
+          {
+            label: 'SIM卡状态',
+            key: 'SIMStatus',
+            labelWidth: 100,
+            select: true,
+            option: [
+              {
+                key: '1',
+                value: '全部'
+              },
+              {
+                key: '2',
+                value: '库存'
+              },
+              {
+                key: '3',
+                value: '待激活'
+              },
+              {
+                key: '4',
+                value: '在用'
+              },
+              {
+                key: '5',
+                value: '停机'
+              }
+            ]
+          },
+          {
+            label: '运营商',
+            key: 'Operator',
+            labelWidth: 100,
+            select: true,
+            option: [
+              {
+                key: '6',
+                value: '全部'
+              },
+              {
+                key: '7',
+                value: '移动'
+              },
+              {
+                key: '8',
+                value: '联通'
+              },
+              {
+                key: '9',
+                value: '电信'
+              }
+            ]
+          },
+          {
+            label: '剩余流量<=',
+            key: 'leaveM',
+            labelWidth: 100,
+            select: true,
+            option: [
+              {
+                key: '10',
+                value: '100%'
+              },
+              {
+                key: '11',
+                value: '90%'
+              },
+              {
+                key: '12',
+                value: '80%'
+              },
+              {
+                key: '13',
+                value: '70%'
+              }
+            ]
+          },
+          {
+            label: '流量套餐',
+            value: '',
+            labelWidth: 160,
+            placeholder: '请输入关键字'
+          },
+          {
+            label: '备注：',
+            value: '',
+            labelWidth: 160
+          },
+          {
+            label: '到期时间',
+            key: 'endTime',
+            width: 150,
+            labelWidth: 100,
+            select: true,
+            option: [
+              {
+                key: '14',
+                value: '未到期'
+              },
+              {
+                key: '15',
+                value: '1个月内'
+              },
+              {
+                key: '16',
+                value: '2个月内'
+              },
+              {
+                key: '17',
+                value: '3个月内'
+              }
+            ]
           }
-        },
-        {
-          label: 'SIM卡状态',
-          key: 'SIMStatus',
-          labelWidth: 100,
-          select: true,
-          option: [
-            {
-              key: '1',
-              value: '全部'
-            },
-            {
-              key: '2',
-              value: '库存'
-            },
-            {
-              key: '3',
-              value: '待激活'
-            },
-            {
-              key: '4',
-              value: '在用'
-            },
-            {
-              key: '5',
-              value: '停机'
-            }
-          ]
-        },
-        {
-          label: '运营商',
-          key: 'Operator',
-          labelWidth: 100,
-          select: true,
-          option: [
-            {
-              key: '6',
-              value: '全部'
-            },
-            {
-              key: '7',
-              value: '移动'
-            },
-            {
-              key: '8',
-              value: '联通'
-            },
-            {
-              key: '9',
-              value: '电信'
-            }
-          ]
-        },
-        {
-          label: '剩余流量<=',
-          key: 'leaveM',
-          labelWidth: 100,
-          select: true,
-          option: [
-            {
-              key: '10',
-              value: '100%'
-            },
-            {
-              key: '11',
-              value: '90%'
-            },
-            {
-              key: '12',
-              value: '80%'
-            },
-            {
-              key: '13',
-              value: '70%'
-            }
-          ]
-        },
-        {
-          label: '流量套餐',
-          value: '',
-          labelWidth: 160,
-          placeholder: '请输入关键字'
-        },
-        {
-          label: '备注：',
-          value: '',
-          labelWidth: 160
-        },
-        {
-          label: '到期时间',
-          key: 'endTime',
-          width: 150,
-          labelWidth: 100,
-          select: true,
-          option: [
-            {
-              key: '14',
-              value: '未到期'
-            },
-            {
-              key: '15',
-              value: '1个月内'
-            },
-            {
-              key: '16',
-              value: '2个月内'
-            },
-            {
-              key: '17',
-              value: '3个月内'
-            }
-          ]
-        }
-      ]
+        ]
+      }
     }
   },
   methods: {
