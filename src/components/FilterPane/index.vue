@@ -1,47 +1,45 @@
 <!--搜索层的组件 参考地址：https://juejin.cn/post/6951564460964347912-->
 <template>
-  <div>
-    <div class="filter-container">
-      <el-date-picker v-if="filterData.timeSelect"
-                      v-model="dateRange"
-                      style="width: 300px"
-                      type="daterange"
-                      start-placeholder="开始日期"
-                      end-placeholder="结束日期"
-                      :default-time="['', '']"
-                      :picker-options="pickerOptions"
-                      class="filter-item" />
-      <template v-if="filterData.elselect">
-        <el-select v-for="(item,index) in filterData.elselect"
-                   :key="index"
-                   v-model="listQuery[item.key]"
-                   :size="item.size ? item.size : 'small'"
-                   :style="{'width':item.width?item.width+'px':'90px'}"
-                   class="filter-item">
-          <el-option v-for="i in item.option"
-                     :key="i.key"
-                     :label="i.value"
-                     :value="i.key" />
-        </el-select>
-      </template>
-      <template v-if="filterData.elinput">
-        <el-input v-for="(item,index) in filterData.elinput"
-                  :key="index"
-                  v-model="listQuery[item.key]"
-                  :placeholder="item.name"
-                  :size="item.size ? item.size : 'small'"
-                  :style="{'width':item.width?item.width+'px':'200px'}" />
-      </template>
-      <div class="btn">
-        <el-button v-for="(item,index) in filterData.elbutton"
-                   class="filter-item"
-                   :key="index"
-                   :type="item.type"
-                   :size="item.size ? item.size : 'small'"
-                   @click="item.handleClick">
-          {{item.name}}
-        </el-button>
-      </div>
+  <div class="filter-container">
+    <el-date-picker v-if="filterData.timeSelect"
+                    v-model="dateRange"
+                    style="width: 300px"
+                    type="daterange"
+                    start-placeholder="开始日期"
+                    end-placeholder="结束日期"
+                    :default-time="['', '']"
+                    :picker-options="pickerOptions"
+                    class="filter-item" />
+    <template v-if="filterData.elselect">
+      <el-select v-for="(item,index) in filterData.elselect"
+                 :key="index"
+                 v-model="listQuery[item.key]"
+                 :size="item.size ? item.size : 'small'"
+                 :style="{'width':item.width?item.width+'px':'90px'}"
+                 class="filter-item">
+        <el-option v-for="i in item.option"
+                   :key="i.key"
+                   :label="i.value"
+                   :value="i.key" />
+      </el-select>
+    </template>
+    <template v-if="filterData.elinput">
+      <el-input v-for="(item,index) in filterData.elinput"
+                :key="index"
+                v-model="listQuery[item.key]"
+                :placeholder="item.name"
+                :size="item.size ? item.size : 'small'"
+                :style="{'width':item.width?item.width+'px':'200px'}" />
+    </template>
+    <div class="btn">
+      <el-button v-for="(item,index) in filterData.elbutton"
+                 class="filter-item"
+                 :key="index"
+                 :type="item.type"
+                 :size="item.size ? item.size : 'small'"
+                 @click="item.handleClick">
+        {{item.name}}
+      </el-button>
     </div>
   </div>
 </template>

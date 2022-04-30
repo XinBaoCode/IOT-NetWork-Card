@@ -1,10 +1,13 @@
 <template>
   <div>
-    <CardFilterPane :dialogVisible="showDialog"
-                    @changeDialog="changeDialog" />
-    <CardList />
-    <SelectDialog :dialogVisible="showDialog"
-                  @changeDialog="changeDialog" />
+    <CardFilterPane :dialogVisible="showSelectDialog"
+                    @changeDialog="changeSelectDialog" />
+    <CardList :singleCardVisible="showSingleCardDialog"
+              @changeSingleCardDialog="changeSingleCardDialog" />
+    <SelectDialog :dialogVisible="showSelectDialog"
+                  @changeDialog="changeSelectDialog" />
+    <SingleCardDialog :dialogVisible="showSingleCardDialog"
+                      @changeDialog="changeSingleCardDialog" />
   </div>
 </template>
 
@@ -13,25 +16,31 @@ import { mapGetters } from 'vuex'
 import CardList from './components/CardList.vue'
 import CardFilterPane from './components/CardFilterPane.vue'
 import SelectDialog from './components/SelectDialog.vue'
+import SingleCardDialog from './components/SingleCardDialog.vue'
 
 export default {
   name: 'CardTable',
   components: {
     CardList,
     CardFilterPane,
-    SelectDialog
+    SelectDialog,
+    SingleCardDialog
   },
   computed: {
     ...mapGetters(['name'])
   },
   data() {
     return {
-      showDialog: false
+      showSelectDialog: false,
+      showSingleCardDialog: false
     }
   },
   methods: {
-    changeDialog(dialog) {
-      this.showDialog = dialog
+    changeSelectDialog(dialog) {
+      this.showSelectDialog = dialog
+    },
+    changeSingleCardDialog(dialog) {
+      this.showSingleCardDialog = dialog
     }
   }
 }

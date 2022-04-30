@@ -4,41 +4,7 @@
   <el-dialog title="筛选器"
              :visible.sync="dialogVisible"
              @close="closeDialog">
-    <div class="dialog-content">
-      <div v-for="(item,idx) in selectList"
-           :key="idx">
-        <div class="dialog-input">
-          <label>{{item.label}}</label>
-          <!--ICCID有两个输入框 -->
-          <div v-if="item.range"
-               style="display:flex">
-            <el-input v-model="item.rangeValue.from"
-                      size="small"
-                      :style="{'width':item.labelWidth ? item.labelWidth+'px': '90px'}" />
-            <div class="border-line"></div>
-            <el-input v-model="item.rangeValue.to"
-                      size="small"
-                      :style="{'width':item.labelWidth ? item.labelWidth+'px': '90px'}" />
-          </div>
-          <!-- 选择框 -->
-          <el-select v-else-if="item.select"
-                     v-model="listQuery[item.key]"
-                     :size="item.size ? item.size : 'small'"
-                     :style="{'width':item.width?item.width+'px':'90px'}">
-            <el-option v-for="i in item.option"
-                       :key="i.key"
-                       :label="i.value"
-                       :value="i.key" />
-          </el-select>
-          <!-- 输入框 -->
-          <el-input v-else
-                    v-model="item.value"
-                    :placeholder="item.placeholder"
-                    size="small"
-                    :style="{'width':item.labelWidth ? item.labelWidth+'px': '90px'}" />
-        </div>
-      </div>
-    </div>
+    <GridPane :selectList="selectList" />
     <span slot="footer"
           class="dialog-footer">
       <el-button @click="closeDialog"
@@ -52,12 +18,16 @@
 </template>
 
 <script>
+import GridPane from '@/components/GridPane'
 export default {
   props: {
     dialogVisible: {
       type: Boolean,
       default: false
     }
+  },
+  components: {
+    GridPane
   },
   data() {
     return {
@@ -188,63 +158,16 @@ export default {
             }
           ]
         }
-      ],
-      listQuery: {}
+      ]
     }
-  },
-  created() {
-    this.getDefaultSelect()
   },
   methods: {
     closeDialog() {
       this.$emit('changeDialog', false)
-    },
-    // 是否采用第一个作为默认选择s
-    getDefaultSelect() {
-      const data = {}
-      const elselect = this.selectList
-      for (let item of elselect) {
-        if (item.select) {
-          data[item.key] = item.option[0].key
-        }
-      }
-      this.listQuery = _.cloneDeep(data) // 利用深克隆保留getter和setter属性
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.dialog-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 430px));
-  grid-gap: 5px;
-  grid-auto-rows: 40px;
-}
-
-.dialog-input {
-  display: flex;
-  align-items: center;
-}
-
-.dialog-input label {
-  font-size: 12px;
-  margin-right: 5px;
-  width: 80px;
-  text-align: right;
-  font-weight: 400;
-}
-
-.hengan {
-  text-align: center;
-}
-
-.border-line {
-  height: 1px;
-  width: 5px;
-  border-top: solid #acc0d8 1px;
-  margin-top: 15px;
-  margin-left: 3px;
-  margin-right: 3px;
-}
 </style>

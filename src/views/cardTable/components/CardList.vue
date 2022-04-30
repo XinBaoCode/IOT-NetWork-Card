@@ -9,6 +9,12 @@ import TablePane from '@/components/TablePane'
 
 export default {
   name: 'CardList',
+  props: {
+    singleCardVisible: {
+      type: Boolean,
+      default: false
+    }
+  },
   components: {
     TablePane
   },
@@ -21,7 +27,7 @@ export default {
             key: 1, // 唯一标识符
             permission: 2010106, // 权限点
             type: 'primary', // 使用element自带按钮类型
-            handleClick: this.handleAdd //自定义事件
+            handleClick: this.exportExcel //自定义事件
           },
           {
             name: '批量导入', //按钮名称
@@ -30,6 +36,14 @@ export default {
             type: 'warning',
             // bgColor: '#36a832',
             handleClick: this.handleAdd //自定义事件
+          },
+          {
+            name: '测试', //按钮名称
+            key: 3, // 唯一标识符
+            permission: 2010106, // 权限点
+            type: 'none',
+            // bgColor: '#36a832',
+            handleClick: this.test //自定义事件
           }
         ],
         data: [], // 表格数据
@@ -150,6 +164,11 @@ export default {
           // ]
         }
       }
+    }
+  },
+  methods: {
+    test() {
+      this.$emit('changeSingleCardDialog', true)
     }
   }
 }
