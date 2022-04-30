@@ -128,8 +128,27 @@ export default {
         },
         {
           label: '剩余流量<=',
-          value: '',
-          labelWidth: 100
+          key: 'leaveM',
+          labelWidth: 100,
+          select: true,
+          option: [
+            {
+              key: '10',
+              value: '100%'
+            },
+            {
+              key: '11',
+              value: '90%'
+            },
+            {
+              key: '12',
+              value: '80%'
+            },
+            {
+              key: '13',
+              value: '70%'
+            }
+          ]
         },
         {
           label: '流量套餐',
@@ -144,8 +163,28 @@ export default {
         },
         {
           label: '到期时间',
-          value: '',
-          labelWidth: 100
+          key: 'endTime',
+          width: 150,
+          labelWidth: 100,
+          select: true,
+          option: [
+            {
+              key: '14',
+              value: '未到期'
+            },
+            {
+              key: '15',
+              value: '1个月内'
+            },
+            {
+              key: '16',
+              value: '2个月内'
+            },
+            {
+              key: '17',
+              value: '3个月内'
+            }
+          ]
         }
       ],
       listQuery: {}
