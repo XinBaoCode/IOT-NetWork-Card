@@ -1,6 +1,7 @@
 <template>
   <div>
-    <apexchart height="300"
+    <apexchart width="95%"
+               height="300"
                type="bar"
                :options="tabGraph.chartOptions"
                :series="tabGraph.series"></apexchart>

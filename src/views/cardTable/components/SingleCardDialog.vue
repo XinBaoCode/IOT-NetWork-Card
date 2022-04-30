@@ -5,7 +5,18 @@
              :visible.sync="dialogVisible"
              @close="closeDialog">
     <GridPane :gridValue="gridValue" />
-    <GraphPane :tabGraph="tabGraphs[0]" />
+    <el-tabs v-model="activeName"
+             @tab-click="handleTabClick"
+             class="graph-panel">
+      <el-tab-pane v-for="(item) in tabList"
+                   :key="item.name"
+                   :label="item.tabLabel"
+                   :name="item.name">
+        <GraphPane v-if="tabList[tabIndex].chartOptions"
+                   :tabGraph="tabList[tabIndex]" />
+
+      </el-tab-pane>
+    </el-tabs>
   </el-dialog>
 </template>
 
@@ -85,9 +96,11 @@ export default {
           }
         ]
       },
-      tabGraphs: [
+      activeName: 'first', // 默认展示tab第一页
+      tabList: [
         {
           tabLabel: '日流量统计',
+          name: 'first',
           chartOptions: {
             chart: {
               id: 'day'
@@ -104,17 +117,47 @@ export default {
               )
             }
           ]
+        },
+        {
+          tabLabel: '月流量统计',
+          name: 'second',
+          chartOptions: {
+            chart: {
+              id: 'month'
+            },
+            xaxis: {
+              categories: Array.from({ length: 11 }, (_, i) => i + 1)
+            }
+          },
+          series: [
+            {
+              name: '该月使用量',
+              data: Array.from({ length: 11 }, (_, i) =>
+                Math.floor(Math.random() * 40)
+              )
+            }
+          ]
         }
-      ]
+      ],
+      tabIndex: 0
     }
   },
   methods: {
     closeDialog() {
       this.$emit('changeDialog', false)
+    },
+    handleTabClick() {
+      this.tabIndex = this.tabList.findIndex(
+        (item) => item.name === this.activeName
+      )
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+.graph-panel {
+  margin-top: 30px;
+  padding-left: 20px;
+}
 </style>
