@@ -27,7 +27,8 @@ export default {
             name: '批量导入', //按钮名称
             key: 2, // 唯一标识符
             permission: 2010106, // 权限点
-            bgColor: '#36a832',
+            type: 'warning',
+            // bgColor: '#36a832',
             handleClick: this.handleAdd //自定义事件
           }
         ],

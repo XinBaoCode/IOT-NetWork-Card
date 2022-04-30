@@ -41,9 +41,11 @@
     </div>
     <span slot="footer"
           class="dialog-footer">
-      <el-button @click="closeDialog">取 消</el-button>
+      <el-button @click="closeDialog"
+                 size="small">取 消</el-button>
       <el-button type="primary"
-                 @click="closeDialog">查 询</el-button>
+                 @click="closeDialog"
+                 size="small">查 询</el-button>
     </span>
   </el-dialog>
 
@@ -154,7 +156,7 @@ export default {
           label: '流量套餐',
           value: '',
           labelWidth: 160,
-          placeholder: '输入关键字后自动搜索'
+          placeholder: '请输入关键字'
         },
         {
           label: '备注：',
@@ -215,9 +217,9 @@ export default {
 <style lang="scss" scoped>
 .dialog-content {
   display: grid;
-  grid-template-columns: 260px 420px auto;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 430px));
   grid-gap: 5px;
-  grid-auto-rows: 50px;
+  grid-auto-rows: 40px;
 }
 
 .dialog-input {
