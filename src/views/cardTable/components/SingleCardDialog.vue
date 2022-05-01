@@ -103,7 +103,7 @@ export default {
           name: 'first',
           chartOptions: {
             chart: {
-              id: 'day'
+              type: 'bar'
             },
             xaxis: {
               categories: Array.from({ length: 30 }, (_, i) => i + 1)
@@ -123,7 +123,7 @@ export default {
           name: 'second',
           chartOptions: {
             chart: {
-              id: 'month'
+              type: 'bar'
             },
             xaxis: {
               categories: Array.from({ length: 11 }, (_, i) => i + 1)

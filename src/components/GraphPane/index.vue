@@ -1,10 +1,9 @@
 <template>
   <div>
-    <apexchart width="95%"
-               height="300"
-               type="bar"
+    <apexchart width="100%"
+               :height="tabGraph.height ? tabGraph.height : '270'"
                :options="tabGraph.chartOptions"
-               :series="tabGraph.series"></apexchart>
+               :series="tabGraph.chartOptions.series"></apexchart>
   </div>
 </template>
 
