@@ -24,6 +24,8 @@ export default {
 
 <style lang="scss" scoped>
 .card-panel {
-  width: 40%;
+  width: 50%;
+  margin-top: 10px;
+  padding-left: 10px;
 }
 </style>

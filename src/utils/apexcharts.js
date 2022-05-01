@@ -1,5 +1,5 @@
 // 这个是基于apexcharts组件得到chartOptions的公有方法
-export function chartOptionsDonut({labels,series,width=200,label="总共"}) {
+export function chartOptionsDonut({labels,series,width=200,total="总共"}) {
   return {
     labels: labels,
     series: series,
@@ -13,7 +13,7 @@ export function chartOptionsDonut({labels,series,width=200,label="总共"}) {
         vertical: 6
       },
       formatter: function(seriesName, opts) {
-        return '<div class="legend-info">' + '<span>' + seriesName + '：</span>' + '<span>' + opts.w.globals.series[opts.seriesIndex] + '</span>' + '</div>'
+        return '<div class="legend-info">' + '<span>' + seriesName + '：</span>' + '<span>' + opts.w.globals.series[opts.seriesIndex] + ' 张</span>' + '</div>'
       }
     },
     dataLabels: { // 是否显示百分比
@@ -42,7 +42,7 @@ export function chartOptionsDonut({labels,series,width=200,label="总共"}) {
             },
             total: {
               show: true,
-              label: label,
+              label: total,
               color: 'black',
               fontWeight: 600,
               formatter: function (w) {
