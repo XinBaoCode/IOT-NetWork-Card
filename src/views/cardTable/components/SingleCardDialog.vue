@@ -107,16 +107,16 @@ export default {
             },
             xaxis: {
               categories: Array.from({ length: 30 }, (_, i) => i + 1)
-            }
-          },
-          series: [
-            {
-              name: '该日使用量',
-              data: Array.from({ length: 30 }, (_, i) =>
-                Math.floor(Math.random() * 40)
-              )
-            }
-          ]
+            },
+            series: [
+              {
+                name: '该日使用量',
+                data: Array.from({ length: 30 }, (_, i) =>
+                  Math.floor(Math.random() * 40)
+                )
+              }
+            ]
+          }
         },
         {
           tabLabel: '月流量统计',
@@ -127,16 +127,16 @@ export default {
             },
             xaxis: {
               categories: Array.from({ length: 11 }, (_, i) => i + 1)
-            }
-          },
-          series: [
-            {
-              name: '该月使用量',
-              data: Array.from({ length: 11 }, (_, i) =>
-                Math.floor(Math.random() * 40)
-              )
-            }
-          ]
+            },
+            series: [
+              {
+                name: '该月使用量',
+                data: Array.from({ length: 11 }, (_, i) =>
+                  Math.floor(Math.random() * 40)
+                )
+              }
+            ]
+          }
         }
       ],
       tabIndex: 0
