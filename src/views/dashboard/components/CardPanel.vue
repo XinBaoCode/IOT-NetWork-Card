@@ -67,9 +67,11 @@ export default {
 .graph-label {
   width: 100%;
   font-weight: bold;
-  font-size: 16px;
-  height: 30px;
-  line-height: 30px;
-  background-color: rgb(171, 189, 183);
+  font-size: 20px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 7px;
+  background-color: rgb(242, 247, 245);
+  padding-left: 10px;
 }
 </style>
