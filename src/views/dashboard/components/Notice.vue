@@ -19,7 +19,7 @@
         </div>
       </div>
     </template>
-    <div style="overflow-y:auto;height:160px;">
+    <div style="overflow-y:auto;height:130px;">
       <div v-for="(item,index) in noticeList"
            :key="item.id"
            class="item-text">
@@ -27,6 +27,7 @@
                 round
                 size="small">{{index+1}}</el-tag>
         <span>{{item.text}}</span>
+        <span class="notice-date">{{item.date}}</span>
         <i class="el-icon-delete icon-delete"
            @click="removeNotice(item.id)"></i>
       </div>
@@ -42,17 +43,17 @@ export default {
       noticeList: [
         {
           id: 1,
-          time: '2022-5-4',
+          date: '2022-5-4',
           text: '哈士奇欢迎你的来访订购'
         },
         {
           id: 2,
-          time: '2022-4-4',
+          date: '2022-4-4',
           text: '清明节特惠,办卡优惠9折起,快快来订购把'
         },
         {
           id: 3,
-          time: '2022-4-4',
+          date: '2022-3-4',
           text: '国庆节卡大甩卖,购卡10000以上享受8折优惠'
         }
       ]
@@ -109,6 +110,18 @@ export default {
   position: relative;
   font-size: 14px;
   margin-bottom: 18px;
+}
+
+.item-text:first-child {
+  font-size: 16px;
+  font-weight: bold;
+  color: #67c23a;
+}
+
+.notice-date {
+  position: absolute;
+  right: 30px;
+  font-size: 13px;
 }
 
 .item-text span {
