@@ -13,7 +13,7 @@
 
 <script>
 import GraphPane from '@/components/GraphPane'
-import { chartOptionsDonut } from '@/utils/apexcharts.js'
+import { chartOptionsDonut } from '@/nodeplugins/apexcharts.js'
 
 export default {
   components: {

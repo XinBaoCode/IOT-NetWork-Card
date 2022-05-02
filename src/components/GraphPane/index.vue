@@ -1,7 +1,7 @@
 <template>
   <div>
     <apexchart width="100%"
-               :height="tabGraph.height ? tabGraph.height : '270'"
+               :height="tabGraph.height ? tabGraph.height : '250'"
                :options="tabGraph.chartOptions"
                :series="tabGraph.chartOptions.series"></apexchart>
   </div>

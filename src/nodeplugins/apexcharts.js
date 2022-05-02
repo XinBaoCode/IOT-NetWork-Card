@@ -10,7 +10,7 @@ export function chartOptionsDonut({labels,series,width=200,total="总共"}) {
       width:width,
       fontSize: '13px',
       itemMargin: {
-        vertical: 6
+        vertical: 5
       },
       formatter: function(seriesName, opts) {
         return '<div class="legend-info">' + '<span>' + seriesName + '：</span>' + '<span>' + opts.w.globals.series[opts.seriesIndex] + ' 张</span>' + '</div>'
